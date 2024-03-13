@@ -7,6 +7,10 @@ from OCP.TopoDS import TopoDS, TopoDS_Wire, TopoDS_Edge, TopoDS_Face, TopoDS_Sha
 from OCP.TopAbs import (TopAbs_FACE, TopAbs_WIRE)
 from OCP.TopTools import TopTools_IndexedMapOfShape
 from volmdlr.core import VolumeModel
+import os
+
+
+data_folder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 
 
 def is_circular(wire):
@@ -25,7 +29,7 @@ def is_circular(wire):
 # search in a Compound all the faces that have a circular hole, if any is found, then we divise its radius by 2.
 shape = TopoDS_Shape()
 builder = BRep_Builder()
-BRepTools.Read_s(shape, "shell.brep", builder)
+BRepTools.Read_s(shape, os.path.join(data_folder, "compound_of_faces.brep"), builder)
 
 shape_editor = BRepTools_ReShape()
 
