@@ -82,7 +82,6 @@ aWire = BRepBuilderAPI_MakeWire(aEdge1.Edge(), aEdge2.Edge(), aEdge3.Edge())
 
 # Quick way to specify the X axis
 xAxis = gp.OX_s()
-
 # Set up the mirror
 aTrsf = gp_Trsf()
 aTrsf.SetMirror(xAxis)
@@ -104,7 +103,6 @@ myWireProfile = mkWire.Wire()
 
 # The face that we'll sweep to make the prism
 myFaceProfile = BRepBuilderAPI_MakeFace(myWireProfile)
-
 # We want to sweep the face along the Z axis to the height
 aPrismVec = gp_Vec(0, 0, height)
 myBody_step1 = BRepPrimAPI_MakePrism(myFaceProfile.Face(), aPrismVec)
